@@ -82,8 +82,19 @@ public class ItemsDAO implements Dao<Items> {
 	}
 
 	@Override
-	public Items update(Items t) {
-		// TODO Auto-generated method stub
+	public Items update(Items item) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection
+						.prepareStatement("UPDATE items SET item_name = ?, item_price = ? WHERE item_id = ?");) {
+			statement.setString(1, item.getItemName());
+			statement.setDouble(2, item.getPrice());
+			statement.setLong(3, item.getItemId());
+			statement.executeUpdate();
+			return read(item.getItemId());
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
 		return null;
 	}
 

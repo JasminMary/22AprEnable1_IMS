@@ -32,4 +32,9 @@ public class ItemsDAOTest {
 		expected.add(new Items(5L, "jumper", 10.99d));
 		assertEquals(expected, DAO.readAll());
 	}
+	@Test
+	public void testUpdate() {
+		final Items updated = new Items(1L, "lamp", 15d);
+		assertEquals(updated, DAO.update(updated));
+	}
 }

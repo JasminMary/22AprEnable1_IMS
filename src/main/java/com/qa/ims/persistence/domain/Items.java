@@ -11,16 +11,16 @@ public class Items {
 		this.setPrice(price);
 	}
 	public Items (Long id, String itemName, Double price) {
-		this.setId(id);
+		this.setItemId(id);
 		this.setItemName(itemName);
 		this.setPrice(price);
 	}
 	
-	public Long getId() {
+	public Long getItemId() {
 		return itemId;
 	}
 
-	public void setId(Long id) {
+	public void setItemId(Long id) {
 		this.itemId = id;
 	}
 
