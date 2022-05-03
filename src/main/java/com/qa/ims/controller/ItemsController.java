@@ -22,8 +22,10 @@ public class ItemsController implements CrudController<Items> {
 	}
 	@Override
 	public List<Items> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Items> items = itemsDAO.readAll();
+		for(Items item : items);
+			LOGGER.info(items);
+		return items;
 	}
 
 	@Override

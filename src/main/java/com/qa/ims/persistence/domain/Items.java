@@ -39,6 +39,12 @@ public class Items {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	
+	@Override
+	public String toString() {
+		return "itemId: " + itemId + ", item name: " + itemName + ", Item Price: " + price;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

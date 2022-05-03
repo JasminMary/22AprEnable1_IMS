@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
     `surname` VARCHAR(40) DEFAULT NULL,
     PRIMARY KEY (`id`)
 );
+
 CREATE TABLE IF NOT EXISTS `items` (
     `item_id` INT(11) NOT NULL AUTO_INCREMENT,
     `item_name` VARCHAR(40) DEFAULT NULL,
