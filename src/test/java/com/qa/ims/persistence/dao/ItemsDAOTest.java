@@ -26,15 +26,34 @@ public class ItemsDAOTest {
 		final Items created = new Items(7L, "PC", 999.99d);
 		assertEquals(created, DAO.create(created));
 	}
+	
 	@Test
 	public void testReadAll() {
 		List<Items> expected = new ArrayList<>();
 		expected.add(new Items(5L, "jumper", 10.99d));
 		assertEquals(expected, DAO.readAll());
 	}
+	
 	@Test
 	public void testUpdate() {
 		final Items updated = new Items(1L, "lamp", 15d);
 		assertEquals(updated, DAO.update(updated));
+	}
+	
+	@Test
+	public void testDelete() {
+		assertEquals(1, DAO.delete(1));
+	}
+	
+	@Test
+	public void testReadLatest() {
+		assertEquals(new Items(4L, "bag", 20.75d), DAO.readLatest());
+	}
+	
+	@Test
+	public void read() {
+		final Long id = 1L;
+		assertEquals(new Items(1L, "bag", 20.75d), DAO.read(id));
+		
 	}
 }
