@@ -23,14 +23,14 @@ public class ItemsDAOTest {
 	
 	@Test
 	public void testCreate() {
-		final Items created = new Items(7L, "PC", 999.99d);
+		final Items created = new Items(2L,"PC", 999.99d);
 		assertEquals(created, DAO.create(created));
 	}
 	
 	@Test
 	public void testReadAll() {
 		List<Items> expected = new ArrayList<>();
-		expected.add(new Items(5L, "jumper", 10.99d));
+		expected.add(new Items(1L,"Book", 8.99d));
 		assertEquals(expected, DAO.readAll());
 	}
 	
@@ -47,13 +47,13 @@ public class ItemsDAOTest {
 	
 	@Test
 	public void testReadLatest() {
-		assertEquals(new Items(4L, "bag", 20.75d), DAO.readLatest());
+		assertEquals(new Items(1L,"Book", 8.99d), DAO.readLatest());
 	}
 	
 	@Test
 	public void read() {
 		final Long id = 1L;
-		assertEquals(new Items(1L, "bag", 20.75d), DAO.read(id));
+		assertEquals(new Items(1L,"Book", 8.99), DAO.read(id));
 		
 	}
 }

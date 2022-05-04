@@ -14,6 +14,8 @@ CREATE TABLE IF NOT EXISTS `ims`.`customers` (
 CREATE TABLE IF NOT EXISTS `ims`.`items` (
    `item_id` INT (11) NOT NULL AUTO_INCREMENT,
    `item_name` VARCHAR (40) DEFAULT NULL,
-   `item_price` DOUBLE (8, 2) DEFAULT NULL,
+   `item_price` DOUBLE (7, 2) DEFAULT NULL,
    PRIMARY KEY (`item_id`)
 );
+
+
