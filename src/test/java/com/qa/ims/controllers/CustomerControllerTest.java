@@ -82,5 +82,19 @@ public class CustomerControllerTest {
 		Mockito.verify(utils, Mockito.times(1)).getLong();
 		Mockito.verify(dao, Mockito.times(1)).delete(ID);
 	}
+	
+	@Test 
+	public void testReadById() {
+		final long ID = 1L;
+		Customer read = new Customer(ID, "fred", "smith");
+		
+		Mockito.when(utils.getLong()).thenReturn(ID);
+		Mockito.when(dao.read(ID)).thenReturn(read);
+		
+		assertEquals(read, this.controller.read());
+		
+		Mockito.verify(utils, Mockito.times(1)).getLong();
+		Mockito.verify(dao, Mockito.times(1)).read(ID);
+	}
 
 }
