@@ -50,8 +50,13 @@ public class OrderController implements CrudController<Orders> {
 
 	@Override
 	public Orders update() {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.info("Please enter the id of the order you would like to update");
+		Long id = utils.getLong();
+		LOGGER.info("Please enter the customer id you'd like to change");
+		Long custid = utils.getLong();
+		Orders order = orderDAO.update(new Orders(id, custid));
+		LOGGER.info("Order updated");
+		return order;
 	}
 
 	@Override
