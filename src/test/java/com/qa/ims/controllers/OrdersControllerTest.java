@@ -31,19 +31,29 @@ public class OrdersControllerTest {
 	
 	@Test
 	public void testCreate() {
-		Orders created = new Orders(1L, 1L, 5);
-		
-		Mockito.when(utils.getLong()).thenReturn(created.getOrderId());
-		Mockito.when(utils.getLong()).thenReturn(created.getItemId());
-		Mockito.when(utils.getInt()).thenReturn(created.getAmount());
+		final Long custid = 2L;
+		Orders created = new Orders(custid);
+	
+		Mockito.when(utils.getLong()).thenReturn(created.getCustomerId());
+
 		Mockito.when(dao.create(created)).thenReturn(created);
 		
 		assertEquals(created, controller.create());
 		
 		Mockito.verify(dao, Mockito.times(1)).create(created);
-		Mockito.verify(utils, Mockito.times(2)).getLong();
-		Mockito.verify(utils, Mockito.times(1)).getInt();
+		Mockito.verify(utils, Mockito.times(1)).getLong();
+
 	}
-	
+	@Test
+	public void testReadALL() {
+		List<Orders> order = new ArrayList<>();
+		order.add(new Orders(1L));
+		
+		Mockito.when(dao.readAll()).thenReturn(order);
+		
+		assertEquals(order, controller.readAll());
+		
+		Mockito.verify(dao, Mockito.times(1)).readAll();
+	}
 	
 }

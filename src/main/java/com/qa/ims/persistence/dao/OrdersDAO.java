@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -20,13 +21,24 @@ public class OrdersDAO implements Dao<Orders> {
 
 	@Override
 	public List<Orders> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement
+						.executeQuery("SELECT * FROM orders");) {
+			List<Orders> order = new ArrayList<>();
+			while (resultSet.next()) {
+				order.add(modelFromResultSet(resultSet));
+			}
+			return order;
+		} catch (SQLException e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return new ArrayList<>();
 	}
 
 	@Override
 	public Orders read(Long id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -34,11 +46,8 @@ public class OrdersDAO implements Dao<Orders> {
 	public Orders create(Orders order) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("INSERT INTO orders(`Customer_id`, `item_id`, `amount`, `total_price`) VALUES (?, ?, ?, ?)");) {
+						.prepareStatement("INSERT INTO orders(`customer_id`) VALUES (?)");) {
 			statement.setLong(1, order.getCustomerId());
-			statement.setLong(2, order.getItemId());
-			statement.setInt(3, order.getAmount());
-			statement.setDouble(4, 0.0);
 			statement.executeUpdate();
 			return readLatest();
 		} catch (Exception e) {
@@ -48,7 +57,7 @@ public class OrdersDAO implements Dao<Orders> {
 		return null;
 	}
 
-	private Orders readLatest() {
+	public Orders readLatest() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders ORDER BY order_id DESC LIMIT 1");) {
@@ -75,13 +84,11 @@ public class OrdersDAO implements Dao<Orders> {
 
 	@Override
 	public Orders modelFromResultSet(ResultSet resultSet) throws SQLException {
-		Long orderId = resultSet.getLong("order_id");
-		Long itemId = resultSet.getLong("item_id");
-		Integer amount = resultSet.getInt("amount");
-		Double totalPrice = resultSet.getDouble("total_Price");
-		String custName = resultSet.getString("first_name");
-		String itemName = resultSet.getString("item_name");
-		return new Orders(orderId, itemId, amount, totalPrice, custName, itemName);
+		//Long orderId = resultSet.getLong("order_id");
+		Long custId = resultSet.getLong("customer_id");
+
+
+		return new Orders(custId);
 	}
 	
 

@@ -26,19 +26,18 @@ public class OrderController implements CrudController<Orders> {
 
 	@Override
 	public List<Orders> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Orders> order = orderDAO.readAll();
+		for (Orders orders : order) {
+			LOGGER.info(order);
+		}
+		return order;
 	}
 
 	@Override
 	public Orders create() {
 		LOGGER.info("Please enter the customer id:");
 		Long customerId = utils.getLong();
-		LOGGER.info("Please enter the item id:");
-		Long itemId = utils.getLong();
-		LOGGER.info("Please enter the item amount:");
-		Integer amount = utils.getInt();
-		Orders order = orderDAO.create(new Orders(customerId, itemId, amount));
+		Orders order = orderDAO.create(new Orders(customerId));
 		LOGGER.info("order created");
 		return order;
 	}

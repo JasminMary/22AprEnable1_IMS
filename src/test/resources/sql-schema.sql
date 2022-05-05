@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS `customers` (
 CREATE TABLE IF NOT EXISTS `orders` (
    `order_id` INT(11) NOT NULL AUTO_INCREMENT,
    `customer_id` INT(11),
-   `order_amount` INT(11) DEFAULT 1,
    PRIMARY KEY (`order_id`),
    FOREIGN KEY (`customer_id`) REFERENCES customers(`id`)
 );
@@ -32,5 +31,6 @@ CREATE TABLE IF NOT EXISTS `order_items` (
 	FOREIGN KEY (`order_id`) REFERENCES orders(`order_id`),
 	FOREIGN KEY (`item_id`) REFERENCES items(`item_id`)
 );
+	
 
 

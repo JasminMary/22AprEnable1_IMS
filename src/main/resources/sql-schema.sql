@@ -20,12 +20,8 @@ CREATE TABLE IF NOT EXISTS `ims`.`items` (
 CREATE TABLE IF NOT EXISTS `ims`.`orders` (
    `order_id` INT(11) NOT NULL AUTO_INCREMENT,
    `customer_id` INT(11),
-   `item_id` INT(11),
-   `amount` INT (10),
-   `total_price` DOUBLE(12, 2),
    PRIMARY KEY (`order_id`),
-   FOREIGN KEY (`customer_id`) REFERENCES customers(`id`),
-   FOREIGN KEY (`item_id`) REFERENCES items(`item_id`)
+   FOREIGN KEY (`customer_id`) REFERENCES customers(`id`)
 );
 CREATE TABLE IF NOT EXISTS `ims`.`order_items` (
 	`order_item_id` INT(11) NOT NULL AUTO_INCREMENT,
