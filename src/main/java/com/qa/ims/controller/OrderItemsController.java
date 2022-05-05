@@ -24,8 +24,16 @@ public class OrderItemsController implements CrudController<OrderItems> {
 
 	@Override
 	public List<OrderItems> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<OrderItems> oi = orderitemsDAO.readAll();
+		for (OrderItems i : oi) {
+			LOGGER.info(i);
+		}
+		return oi;
+	}
+	public OrderItems read() {
+		LOGGER.info("Please enter the id of the order items you would like to read");
+		Long id = utils.getLong();
+		return orderitemsDAO.read(id);
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -19,16 +20,36 @@ public class OrderItemsDAO implements Dao<OrderItems>{
 
 	@Override
 	public List<OrderItems> readAll() {
-
-		return null;
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM order_items");) {
+			List<OrderItems> oi = new ArrayList<>();
+			while (resultSet.next()) {
+				oi.add(modelFromResultSet(resultSet));
+			}
+			return oi;
+		} catch (SQLException e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return new ArrayList<>(); 
 	}
 
 	@Override
 	public OrderItems read(Long id) {
-		// TODO Auto-generated method stub
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				PreparedStatement statement = connection.prepareStatement("SELECT * FROM order_items WHERE order_item_id = ?");) {
+			statement.setLong(1, id);
+			try (ResultSet resultSet = statement.executeQuery();) {
+				resultSet.next();
+				return modelFromResultSet(resultSet);
+			}
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
 		return null;
 	}
-
 	@Override
 	public OrderItems create(OrderItems orderitem) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
