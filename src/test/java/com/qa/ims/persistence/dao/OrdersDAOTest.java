@@ -44,4 +44,9 @@ public class OrdersDAOTest {
 		final Orders updated = new Orders(1L, 3L);
 		assertEquals(updated, DAO.update(updated));
 	}
+	
+	@Test
+	public void testDelete() {
+		assertEquals(1, DAO.delete(1));
+	}
 }

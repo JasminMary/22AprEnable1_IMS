@@ -61,8 +61,9 @@ public class OrderController implements CrudController<Orders> {
 
 	@Override
 	public int delete() {
-		// TODO Auto-generated method stub
-		return 0;
+		LOGGER.info("Please enter the id of the order you would like to delete");
+		Long id = utils.getLong();
+		return orderDAO.delete(id);
 	}
 
 }
