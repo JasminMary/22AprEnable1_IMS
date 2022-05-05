@@ -66,4 +66,16 @@ public class OrderItemsControllerTest {
 		Mockito.verify(utils, Mockito.times(1)).getLong();
 		Mockito.verify(dao, Mockito.times(1)).read(ID);
 	}
+	@Test
+	public void testUpdate() {
+		OrderItems updated = new OrderItems(2L, 1L, 1L, 1L);
+		
+		Mockito.when(this.utils.getLong()).thenReturn(2L, 1L, 1L, 1L);
+		Mockito.when(this.dao.update(updated)).thenReturn(updated);
+		
+		assertEquals(updated, this.controller.update());
+		
+		Mockito.verify(this.utils, Mockito.times(4)).getLong();
+		Mockito.verify(this.dao, Mockito.times(1)).update(updated);
+	}
 }

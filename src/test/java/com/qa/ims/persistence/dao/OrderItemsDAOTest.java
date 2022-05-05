@@ -37,5 +37,10 @@ public class OrderItemsDAOTest {
 		final Long ID = 1L;
 		assertEquals(new OrderItems(ID, 1l, 1l,1l), DAO.read(ID));
 	}
+	@Test
+	public void testUpdate() {
+		final OrderItems updated = new OrderItems(2L, 1L, 1L, 1L);
+		assertEquals(updated, DAO.update(updated));
+	}
 }
 	

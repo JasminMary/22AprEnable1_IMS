@@ -51,8 +51,16 @@ public class OrderItemsController implements CrudController<OrderItems> {
 
 	@Override
 	public OrderItems update() {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.info("Please enter the id of the order_items you would like to update:");
+		Long id = utils.getLong();
+		LOGGER.info("Please enter order id");
+		Long orderid = utils.getLong();
+		LOGGER.info("Please enter item id");
+		Long itemid = utils.getLong();
+		LOGGER.info("Please enter item quantity");
+		Long quantity = utils.getLong();
+		OrderItems oi = orderitemsDAO.update(new OrderItems(id, orderid, itemid, quantity));
+		return oi;
 	}
 
 	@Override
