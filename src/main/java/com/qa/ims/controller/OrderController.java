@@ -23,6 +23,12 @@ public class OrderController implements CrudController<Orders> {
 		this.orderDAO = orderDAO;
 		this.utils = utils;
 	}
+	
+	public Orders read() {
+		LOGGER.info("Please enter the id of the customer you would like to read");
+		Long id = utils.getLong();
+		return orderDAO.read(id);
+	}
 
 	@Override
 	public List<Orders> readAll() {

@@ -23,14 +23,20 @@ public class OrdersDAOTest {
 	}
 	@Test
 	public void testCreate() {
-		final Orders created = new Orders(2L);
+		final Orders created = new Orders(4L, 2L);
 		assertEquals(created, DAO.create(created));
 	
 	}
 	@Test
 	public void readAllTest() {
 	List<Orders> expected = new ArrayList<>();
-	expected.add(new Orders(1L));
+	expected.add(new Orders(1L, 1L));
 	assertEquals(expected, DAO.readAll());
+	}
+	
+	@Test
+	public void testRead() {
+	final Long ID = 1L;
+	assertEquals(new Orders(ID, 1L), DAO.read(ID));
 	}
 }
