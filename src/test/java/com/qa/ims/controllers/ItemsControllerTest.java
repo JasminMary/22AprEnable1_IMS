@@ -86,5 +86,17 @@ public class ItemsControllerTest {
 		Mockito.verify(dao, Mockito.times(1)).delete(ID);
 	}	
 	
-
+	@Test
+	public void testReadById() {
+		final long ID = 1L;
+		Items read = new Items(1L, "lamp", 15d);
+		
+		Mockito.when(utils.getLong()).thenReturn(ID);
+		Mockito.when(dao.read(ID)).thenReturn(read);
+		
+		assertEquals(read, this.controller.read());
+		
+		Mockito.verify(utils, Mockito.times(1)).getLong();
+		Mockito.verify(dao, Mockito.times(1)).read(ID);
+	}
 }
