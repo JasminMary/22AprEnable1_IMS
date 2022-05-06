@@ -27,7 +27,9 @@ To install this project, download it, then open into an eclipse workspace. To do
 To run the tests you can right click on the folder location and ‘Run as’ a ‘JUnit test or you can ‘Run as’ a ‘JUnit test on the individual test files. Coverage can also be displayed by right clicking the folder and selecting ‘coverage as’ then ‘JUnit test’.
 Running the tests:
 ![image](https://user-images.githubusercontent.com/89535920/167154118-ef4e933a-9f56-4772-b4f4-71f1ef84acf2.png)
+
 Checking coverage: 
+
 ![image](https://user-images.githubusercontent.com/89535920/167154418-c6bd0fed-cdf4-488e-a60d-b416d7995a4f.png)
 
 ### Unit and Integration Tests 
