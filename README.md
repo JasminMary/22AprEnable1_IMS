@@ -32,7 +32,7 @@ The unit tests covered the data access objects(DAO) ability to be able to create
 
 ## Deployment
 
-To deploy, run using "java -jar.ims-0.0.-jar-with-dependancies", while in the target folder of the project from any command line interface.
+To deploy, run using "java -jar.ims-0.0.1-SNAPSHOT-jar-with-dependancies", while in the target folder of the project from any command line interface.
 
 ## Built With
 
