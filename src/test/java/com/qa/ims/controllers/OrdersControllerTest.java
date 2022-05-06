@@ -14,6 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.qa.ims.controller.OrderController;
 import com.qa.ims.persistence.dao.OrdersDAO;
+import com.qa.ims.persistence.domain.OrderItems;
 import com.qa.ims.persistence.domain.Orders;
 import com.qa.ims.utils.Utils;
 
@@ -55,6 +56,7 @@ public class OrdersControllerTest {
 		
 		Mockito.verify(dao, Mockito.times(1)).readAll();
 	}
+	@Test
 	public void testUpdate() {
 		final Orders updated = new Orders(1L, 3L);
 	
@@ -77,5 +79,18 @@ public class OrdersControllerTest {
 
 		Mockito.verify(utils, Mockito.times(1)).getLong();
 		Mockito.verify(dao, Mockito.times(1)).delete(ID);
+	}
+	@Test
+	public void testReadById() {
+		final long ID = 1L;
+		Orders read = new Orders(ID, 1l);
+		
+		Mockito.when(utils.getLong()).thenReturn(ID);
+		Mockito.when(dao.read(ID)).thenReturn(read);
+		
+		assertEquals(read, this.controller.read());
+		
+		Mockito.verify(utils, Mockito.times(1)).getLong();
+		Mockito.verify(dao, Mockito.times(1)).read(ID);
 	}
 }

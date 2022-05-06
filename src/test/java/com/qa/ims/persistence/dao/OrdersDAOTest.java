@@ -49,4 +49,6 @@ public class OrdersDAOTest {
 	public void testDelete() {
 		assertEquals(1, DAO.delete(1));
 	}
-}
+
+	}
+
