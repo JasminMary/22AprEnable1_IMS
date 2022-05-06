@@ -45,7 +45,7 @@ public class CustomerDAO implements Dao<Customer> {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
 		}
-		return new ArrayList<>();
+		return new ArrayList<>(); 
 	}
 
 	public Customer readLatest() {
