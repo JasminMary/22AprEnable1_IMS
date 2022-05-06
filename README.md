@@ -28,11 +28,11 @@ To run the tests you can right click on the folder location and ‘Run as’ a �
 
 ### Unit and Integration Tests 
 
-The unit tests covered the data access objects(DAO) ability to be able to create, read, update and delete a customer, item or order. While the integration tests tested the controllers ability to be able to get the information and then use CRUD functionality for the customers, items and orders.
+The unit tests covered the data access objects(DAO) ability to be able to create, read, update and delete a customer, item or order. While the integration tests, tested the controllers ability to be able to get the information and then use CRUD functionality for the customers, items and orders.
 
 ## Deployment
 
-To deploy run using "java -jar.ims-0.0.-jar-with-dependancies" from any command line interface.
+To deploy, run using "java -jar.ims-0.0.-jar-with-dependancies", while in the target folder of the project from any command line interface.
 
 ## Built With
 
