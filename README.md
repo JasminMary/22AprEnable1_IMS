@@ -1,7 +1,8 @@
-Coverage: 34%
-# Project Title
+Coverage:
 
-One Paragraph of project description goes here
+## Inventory Management System 
+
+Hello! This is a project to create, read, update and delete customers, items or orders from an inventory management application. The purpose of this project is to put into practice what we have learnt over the past 5 weeks with QA academy and show that we can implement the skills we have learnt. To complete the project we had to use our training in Java, databases(mySQL), version source control and the agile methodology.
 
 ## Getting Started
 
@@ -9,60 +10,29 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+The first prerequisite for development and testing is java - any version over 1.8 should work with this project. Here’s a link for Java 14: https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html
 
-```
-Give examples
-```
+Secondly, you’ll need an java compatible IDE, I’m currently using eclipse for java developers: https://www.eclipse.org/downloads/packages/release/kepler/sr1/eclipse-ide-java-developers
+
+Finally is Maven, a build automation tool: https://maven.apache.org/download.cgi
+This can also be found on the eclipse marketplace. 
+
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+To install this project, download it, then open into an eclipse workspace. To do this, navigate to File/Open Projects from File System within eclipse and then select the project folder. This should then give you access to the files within the project. To run the project from the eclipse console, navigate to the runner class (which should be this: src/main/java/com.qa.ims) then right click and select ‘run as’ followed by ‘Java application’. You should now be able to demo the application.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system. Break down into which tests and what they do
+To run the tests you can right click on the folder location and ‘Run as’ a ‘JUnit test or you can ‘Run as’ a ‘JUnit test on the individual test files. Coverage can also be displayed by right clicking the folder and selecting ‘coverage as’ then ‘JUnit test’ .
 
-### Unit Tests 
+### Unit and Integration Tests 
 
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### Integration Tests 
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+The unit tests covered the data access objects(DAO) ability to be able to create, read, update and delete a customer, item or order. While the integration tests tested the controllers ability to be able to get the information and then use CRUD functionality for the customers, items and orders.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+To deploy run using "java -jar.ims-0.0.-jar-with-dependancies" from any command line interface.
 
 ## Built With
 
@@ -84,6 +54,7 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Thank you to all the trainers we've had to teach us a QA!!! And also to Richard Mansworth for being able to spot my SQL syntax errors!
+
+## Jira Board
+https://jasminw.atlassian.net/jira/software/projects/IMS/boards/3/roadmap
