@@ -54,7 +54,7 @@ public class OrderItemsDAO implements Dao<OrderItems>{
 	public OrderItems create(OrderItems orderitem) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("INSERT INTO order_items(`order_id`, `item_id`, `quantity`) VALUES (?, ?, ?)");) {
+						.prepareStatement("INSERT INTO order_items (order_id, item_id, quantity) VALUES (?, ?, ?)")) {
 			statement.setLong(1, orderitem.getOrderId());
 			statement.setLong(2, orderitem.getItemId());
 			statement.setLong(3, orderitem.getQuantity());
